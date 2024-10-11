@@ -1,91 +1,87 @@
-````markdown
-# Machine Learning-Based SMS Spam Filtering
+# Machine Learning based SMS Spam Filtering using Python3
 
 ## Part 1: Code Execution and ARFF File Generation
 
-This document provides instructions for executing the Python 3 code to extract features from SMS messages and generate the ARFF (Attribute-Relation File Format) file, which can be used with the WEKA machine learning tool.
+This document provides instructions for executing the Python code to extract features from SMS messages and generate an ARFF (Attribute-Relation File Format) file, which can be used with the WEKA machine learning tool.
 
 ### Prerequisites
 
-Ensure you have the following files in the same directory:
+Before you begin, ensure you have the following files in the same directory:
 
 - `smsfiltering.py` (Python script for SMS spam filtering)
 - `english_big.txt` (Dataset containing SMS messages)
-
-Here’s the revised section of the **README.md** with clearer instructions for installing Python 3 on Windows, Unix (Linux), and macOS.
 
 ### Step 1: Install Python 3
 
 Make sure Python 3 is installed on your machine. You can check this by running the following command in your terminal or command prompt:
 
-```bash
+```
 python3 --version
 ```
 
-If you are using **Windows**, you may need to use:
+If you are using Windows, you may need to use:
 
-```bash
+```
 python --version
 ```
 
-If Python 3 is not installed, follow the instructions below to install it based on your operating system:
+If Python 3 is not installed, follow the instructions below based on your operating system:
 
-#### A. Windows
+**A. Windows**
 
-1. Download the Python 3 installer from the [official Python website](https://www.python.org/downloads/).
-2. Run the installer and make sure to check the box that says **"Add Python to PATH"** during installation.
+1. Download the Python 3 installer from the official [Python website](https://www.python.org/downloads/).
+2. Run the installer and make sure to check the box that says "Add Python to PATH" during installation.
 3. Follow the prompts to complete the installation.
 
-#### B. Linux (Unix)
+**B. Linux (Unix)**
 
-- For **Debian/Ubuntu-based distributions**:
+- For Debian/Ubuntu-based distributions:
 
-  ```bash
+  ```
   sudo apt update
   sudo apt install python3
   ```
 
-- For **Red Hat/CentOS/Fedora**:
+- For Red Hat/CentOS/Fedora:
 
-  ```bash
+  ```
   sudo yum install python3
   ```
 
-- For **Arch Linux**:
-  ```bash
+- For Arch Linux:
+  ```
   sudo pacman -S python
   ```
 
-#### C. macOS
+**C. macOS**
 
-You can install Python 3 on macOS using Homebrew (a package manager for macOS). If Homebrew is not installed, you can install it from [Homebrew's website](https://brew.sh/).
+You can install Python 3 on macOS using Homebrew (a package manager for macOS). If Homebrew is not installed, you can install it from the [Homebrew website](https://brew.sh/).
 
 1. Open a terminal.
 2. Install Python 3 with Homebrew:
-   ```bash
+   ```
    brew install python
    ```
 
-Alternatively, you can download the Python 3 installer from the [official Python website](https://www.python.org/downloads/) and follow the prompts to install it.
+Alternatively, you can download the Python 3 installer from the official [Python website](https://www.python.org/downloads/) and follow the prompts to install it.
 
 After installation, verify that Python 3 is installed correctly by running the command again:
 
-```bash
+```
 python3 --version
 ```
 
 or on Windows:
 
-```bash
+```
 python --version
 ```
-````
 
 ### Step 2: Install Required Libraries
 
 You may need to install additional libraries for text processing. The `re` module for regular expressions is included in Python's standard library. If you wish to use additional libraries like `nltk`, install it using:
 
-```bash
+```
 pip install nltk
 ```
 
@@ -95,7 +91,7 @@ pip install nltk
 2. Navigate to the directory containing `smsfiltering.py` and `english_big.txt`.
 3. Run the script using the following command:
 
-```bash
+```
 python3 smsfiltering.py
 ```
 
@@ -154,7 +150,3 @@ If WEKA is not already installed, download it from the [WEKA website](https://wa
 Note these metrics for each classifier to compare their performance. Repeat Step 7 for each of the five classifiers to assess which performs best in identifying SMS spam messages.
 
 The classifier with the highest accuracy and favorable TPR/FPR values may be deemed the most suitable for your SMS spam detection task.
-
-```
-
-```
