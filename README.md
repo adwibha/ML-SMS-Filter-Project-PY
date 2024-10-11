@@ -1,126 +1,160 @@
-### Machine Learning based SMS Spam Filtering
+````markdown
+# Machine Learning-Based SMS Spam Filtering
 
-#### Part 1: Code Execution and ARFF File Generation
+## Part 1: Code Execution and ARFF File Generation
 
-Follow the instructions below to execute the code and generate the ARFF (Attribute-Relation File Format) file for use with the WEKA machine learning tool.
+This document provides instructions for executing the Python 3 code to extract features from SMS messages and generate the ARFF (Attribute-Relation File Format) file, which can be used with the WEKA machine learning tool.
 
-1. **Ensure Required Files Are in the Same Directory:**
+### Prerequisites
 
-   - `smsfiltering.js`
-   - `english_big.txt`
+Ensure you have the following files in the same directory:
 
-2. **Open the Working Directory:**
+- `smsfiltering.py` (Python script for SMS spam filtering)
+- `english_big.txt` (Dataset containing SMS messages)
 
-   - Use the command prompt (Windows) or terminal (Linux/macOS) to navigate to the directory containing the files.
+Here’s the revised section of the **README.md** with clearer instructions for installing Python 3 on Windows, Unix (Linux), and macOS.
 
-3. **Node.js Installation:**
-   - The code is written in JavaScript and requires Node.js to run. Ensure Node.js is installed on your machine.
-4. **If Node.js Is Installed:**
+### Step 1: Install Python 3
 
-   - Skip to Step 6 to execute the code directly.
+Make sure Python 3 is installed on your machine. You can check this by running the following command in your terminal or command prompt:
 
-5. **Installing Node.js:**
-   If Node.js is not already installed, follow the steps below:
+```bash
+python3 --version
+```
 
-   **A. Install Node.js:**
+If you are using **Windows**, you may need to use:
 
-   - **Windows**: Download and install Node.js from the official website [Node.js](https://nodejs.org/).
-   - **Linux**:
+```bash
+python --version
+```
 
-     - On Ubuntu or Debian:
-       ```bash
-       sudo apt update
-       sudo apt install nodejs
-       ```
-     - On Red Hat, CentOS, or Fedora:
-       ```bash
-       sudo yum install nodejs
-       ```
-       Ensure you install Node Package Manager (npm) as well.
+If Python 3 is not installed, follow the instructions below to install it based on your operating system:
 
-   - **macOS**: Install Node.js using Homebrew:
-     1. If Homebrew is not installed, follow instructions on [Homebrew's website](https://brew.sh/).
-     2. After installing Homebrew, run:
-        ```bash
-        brew install node
-        ```
+#### A. Windows
 
-   **B. Running JavaScript Code:**
+1. Download the Python 3 installer from the [official Python website](https://www.python.org/downloads/).
+2. Run the installer and make sure to check the box that says **"Add Python to PATH"** during installation.
+3. Follow the prompts to complete the installation.
 
-   - **Command Line**:
+#### B. Linux (Unix)
 
-     1. Open the terminal or command prompt.
-     2. Navigate to the directory where `smsfiltering.js` is located.
-     3. Execute the script with:
-        ```bash
-        node smsfiltering.js
-        ```
+- For **Debian/Ubuntu-based distributions**:
 
-   - **Using an IDE**: If you're using an IDE like Visual Studio Code, open the `.js` file and run the script using the integrated terminal. Simply execute:
-     ```bash
-     node smsfiltering.js
-     ```
+  ```bash
+  sudo apt update
+  sudo apt install python3
+  ```
 
-   **C. Viewing the Output:**
+- For **Red Hat/CentOS/Fedora**:
 
-   - The terminal will display the output of the script. For debugging or testing, you can use `console.log()` to print specific messages or data in the code.
+  ```bash
+  sudo yum install python3
+  ```
 
-6. **Execute the Code:**
-   Run the following command in the terminal:
+- For **Arch Linux**:
+  ```bash
+  sudo pacman -S python
+  ```
 
+#### C. macOS
+
+You can install Python 3 on macOS using Homebrew (a package manager for macOS). If Homebrew is not installed, you can install it from [Homebrew's website](https://brew.sh/).
+
+1. Open a terminal.
+2. Install Python 3 with Homebrew:
    ```bash
-   node smsfiltering.js
+   brew install python
    ```
 
-7. **ARFF File Generation:**
-   The script will generate an ARFF file. This file format is used by WEKA for machine learning tasks, including SMS spam filtering.
+Alternatively, you can download the Python 3 installer from the [official Python website](https://www.python.org/downloads/) and follow the prompts to install it.
+
+After installation, verify that Python 3 is installed correctly by running the command again:
+
+```bash
+python3 --version
+```
+
+or on Windows:
+
+```bash
+python --version
+```
+````
+
+### Step 2: Install Required Libraries
+
+You may need to install additional libraries for text processing. The `re` module for regular expressions is included in Python's standard library. If you wish to use additional libraries like `nltk`, install it using:
+
+```bash
+pip install nltk
+```
+
+### Step 3: Execute the Python Script
+
+1. Open the terminal or command prompt.
+2. Navigate to the directory containing `smsfiltering.py` and `english_big.txt`.
+3. Run the script using the following command:
+
+```bash
+python3 smsfiltering.py
+```
+
+### Step 4: Verify ARFF File Generation
+
+After the script runs successfully, it will generate a file named `sms_spam_detection.arff` in the same directory. This file is formatted for use with the WEKA machine learning tool.
 
 ---
 
-#### Part 2: Using WEKA for SMS Spam Detection
+## Part 2: Using WEKA for SMS Spam Detection
 
-This section explains how to use WEKA to load the ARFF file and apply machine learning algorithms for SMS spam classification. You will use the following five classifiers with cross-validation: **Decision Tree (J48), Multinomial Naive Bayes, K-Nearest Neighbors (KNN), SVM (LibSVM), and RandomForest**. Afterward, you will analyze the results for Accuracy, True Positive Rate (TPR), and False Positive Rate (FPR) for each classifier.
+This section explains how to use WEKA to load the ARFF file and apply machine learning algorithms for SMS spam classification.
 
-##### Step 1: Launch WEKA
+### Step 1: Install WEKA
 
-1. **Install WEKA**: If WEKA is not already installed, download it from the [WEKA website](https://waikato.github.io/weka-wiki/downloading_weka/).
-2. **Run WEKA**: Open the WEKA application on your system.
+If WEKA is not already installed, download it from the [WEKA website](https://waikato.github.io/weka-wiki/downloading_weka/).
 
-##### Step 2: Load the ARFF File
+### Step 2: Launch WEKA
 
-3. In WEKA, click on the **Explorer** button to open the Explorer interface.
-4. Click **Open file** and navigate to the directory where the ARFF file is stored. Load the file, which contains the SMS spam dataset and its features.
+1. Open the WEKA application on your system.
 
-##### Step 3: Set the Class Attribute
+### Step 3: Load the ARFF File
 
-5. After loading the dataset, select the attribute representing the class label. In this case, it should be "class" with values "spam" and "ham." This attribute will be used for binary classification.
+1. Click on the **Explorer** button to open the Explorer interface.
+2. Click **Open file** and navigate to the directory where the ARFF file is stored. Load the file, which contains the SMS spam dataset and its features.
 
-##### Step 4: Select Classifiers
+### Step 4: Set the Class Attribute
 
-6. Click on the **Classify** tab in the Explorer interface.
-7. In the **Classifier** section, select each of the following classifiers:
+1. After loading the dataset, select the attribute representing the class label, which should be "class" with values "spam" and "ham."
+
+### Step 5: Select Classifiers
+
+1. Click on the **Classify** tab in the Explorer interface.
+2. In the **Classifier** section, select each of the following classifiers:
    - J48 (Decision Tree)
    - NaiveBayesMultinomial (Multinomial Naive Bayes)
    - IBk (K-Nearest Neighbors)
    - LibSVM (Support Vector Machine)
    - RandomForest (Random Forest)
 
-##### Step 5: Set Cross-Validation
+### Step 6: Set Cross-Validation
 
-8. WEKA performs cross-validation with **K=10** by default. You can retain these default settings.
+1. WEKA performs cross-validation with **K=10** by default. You can retain these default settings.
 
-##### Step 6: Run the Classifiers
+### Step 7: Run the Classifiers
 
-9. For each classifier selected in Step 4, click the **Start** button to run it on your dataset. WEKA will evaluate the classifier's performance using cross-validation.
+1. For each classifier selected in Step 5, click the **Start** button to run it on your dataset. WEKA will evaluate the classifier's performance using cross-validation.
 
-##### Step 7: Analyze the Results
+### Step 8: Analyze the Results
 
-10. Once classification is complete, WEKA will display performance metrics, including:
+1. Once classification is complete, WEKA will display performance metrics, including:
+   - **Accuracy**
+   - **True Positive Rate (TPR)**
+   - **False Positive Rate (FPR)**
 
-- **Accuracy**
-- **True Positive Rate (TPR)**
-- **False Positive Rate (FPR)**
+Note these metrics for each classifier to compare their performance. Repeat Step 7 for each of the five classifiers to assess which performs best in identifying SMS spam messages.
 
-Note these metrics for each classifier to compare their performance.
+The classifier with the highest accuracy and favorable TPR/FPR values may be deemed the most suitable for your SMS spam detection task.
 
-Repeat **Step 6** for each of the five classifiers to assess which performs best in identifying SMS spam messages. The classifier with the highest accuracy and favorable TPR/FPR values may be deemed the most suitable for your SMS spam detection task.
+```
+
+```
